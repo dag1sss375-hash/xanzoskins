@@ -1,0 +1,128 @@
+/* Asosiy Modal - Fonni xiralashtirish (Glassmorphism) */
+#roulette-modal {
+    display: none; 
+    position: fixed; 
+    top: 0; left: 0; 
+    width: 100vw; height: 100vh; 
+    background: rgba(0, 0, 0, 0.95); 
+    z-index: 9999; 
+    justify-content: center; 
+    align-items: center;
+}
+
+/* Faqat ramka (viewport) uchun */
+#roulette-viewport {
+    width: 280px !important;    /* Ramka eni (tor) */
+    height: 455px !important;   /* Ramka bo'yi (uzun) */
+    border: 3px solid #ff00ff; 
+    border-radius: 30px; 
+    overflow: hidden; 
+    position: relative;
+    background: #000;
+}
+
+/* Rasmlar joylashgan yo'l (faqat bo'yiga) */
+#roulette-track {
+    display: flex !important;
+    flex-direction: column !important; /* MAJBURAN BO'YIGA */
+    align-items: center;
+    width: 100%;
+}
+
+/* Har bir rasm uchun */
+.roulette-item {
+    width: 100%;
+    height: 150px; /* Rasmlar bo'yiga qator bo'lib tushadi */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #333;
+}
+.roulette-item img {
+    width: 105px; 
+    height: 105px; 
+    object-fit: contain;
+}
+
+/* O'rtadagi markaziy chiziq (Reels'dagi "safe area" kabi) */
+#roulette-viewport::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ff00ff, transparent);
+    z-index: 10;
+    transform: translateY(-50%);
+}
+/* Natija oynasi */
+#result-display {
+    background: transparent;
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+}
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.result-display img { 
+    width: 200px; 
+    filter: drop-shadow(0 0 25px #FFD700);
+    margin-bottom: 15px; 
+}
+
+.result-display h3 { 
+    color: #FFD700; 
+    font-size: 28px; 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0; 
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+/* Tugmalar - Premium ko'rinish */
+.modal-btns { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 12px; 
+    margin-top: 20px; 
+    width: 80%;
+}
+
+.modal-btns button { 
+    padding: 15px; 
+    border: none; 
+    border-radius: 12px; 
+    color: white; 
+    cursor: pointer; 
+    font-weight: 800; 
+    text-transform: uppercase;
+    background: linear-gradient(45deg, #FF4500, #FF8C00); 
+    box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3);
+    transition: 0.2s;
+}
+
+.modal-btns button:active {
+    transform: scale(0.95);
+}
+
+.withdraw-btn {
+    background: linear-gradient(45deg, #32CD32, #228B22) !important;
+}
+
+/* Keys titrash animatsiyasi */
+.case-shake {
+    animation: shake 0.2s infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    20% { transform: translate(-1px, -2px) rotate(-1deg); }
+    40% { transform: translate(-3px, 0px) rotate(1deg); }
+    60% { transform: translate(3px, 2px) rotate(0deg); }
+    80% { transform: translate(1px, -1px) rotate(1deg); }
+    100% { transform: translate(-1px, 2px) rotate(-1deg); }
+}
